@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration scan="true" scanPeriod="60 seconds" debug="false">
+
+	<property name="DEV_HOME" value="logs" />
+	<appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+		<encoder>
+			<Pattern> [%-5level %d{yyyy-MM-dd HH:mm:ss.SSS}] [%thread] %logger{36}.%M\(%file:%line\) - %msg%n </Pattern>
+		</encoder>
+	</appender>
+	<appender name="FILE-INFO"
+		class="ch.qos.logback.core.rolling.RollingFileAppender">
+		<file>${DEV_HOME}/info.log</file>
+		<encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
+			<Pattern> [%-5level %d{yyyy-MM-dd HH:mm:ss.SSS}] [%thread]%logger{36}.%M\(%file:%line\) - %msg%n </Pattern>
+		</encoder>
+		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+			rollover daily
+			<fileNamePattern>${DEV_HOME}/archived/info.%d{yyyy-MM-dd}.%i.log
+			</fileNamePattern>
+			<timeBasedFileNamingAndTriggeringPolicy
+				class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
+				<maxFileSize>10MB</maxFileSize>
+			</timeBasedFileNamingAndTriggeringPolicy>
+		</rollingPolicy>
+	</appender>
+	<appender name="FILE-ERROR"
+		class="ch.qos.logback.core.rolling.RollingFileAppender">
+		<file>${DEV_HOME}/error.log</file>
+		<encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
+			<Pattern> [%-5level %d{yyyy-MM-dd HH:mm:ss.SSS}] [%thread] %logger{36}.%M\(%file:%line\) - %msg%n </Pattern>
+		</encoder>
+		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+			rollover daily
+			<fileNamePattern>${DEV_HOME}/archived/error.%d{yyyy-MM-dd}.%i.log
+			</fileNamePattern>
+			<timeBasedFileNamingAndTriggeringPolicy
+				class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
+				<maxFileSize>10MB</maxFileSize>
+			</timeBasedFileNamingAndTriggeringPolicy>
+		</rollingPolicy>
+	</appender>
+	<root level="error">
+		<appender-ref ref="STDOUT" />
+		<appender-ref ref="FILE-ERROR" />
+	</root>
+<!-- 	<statusListener class="ch.qos.logback.core.status.OnConsoleStatusListener" />
+	<appender name="EMAIL" class="ch.qos.logback.classic.net.SMTPAppender">
+		<To>***@gmail.com</To>
+		<To>***@gmail.com</To>
+		<From>***@gmail.com</From>
+		<smtpHost>***.***.***.***</smtpHost>
+		<smtpPort>25</smtpPort>
+		<subject>Log:%logger - %msg</subject>
+		<asynchronousSending>false</asynchronousSending>
+		<layout class="ch.qos.logback.classic.PatternLayout">
+			<pattern>%date %-5level %logger{35} - %message%n</pattern>
+		</layout>
+		<filter class="ch.qos.logback.core.filter.EvaluatorFilter">
+			<evaluator class="ch.qos.logback.classic.boolex.JaninoEventEvaluator">
+				<expression>
+					& encoded as &amp;
+					if(level == ERROR) { return true; } return false;
+					(marker != null) &amp;&amp;
+					(marker.contains("DEV") &amp;&amp; message.contains("hello") )
+				</expression>
+			</evaluator>
+			<onMatch>ACCEPT</onMatch>
+			<onMismatch>DENY</onMismatch>
+		</filter>
+	</appender>
+
+	<root>
+		<level value="debug" />
+		<appender-ref ref="EMAIL" />
+	</root> -->
+</configuration>
