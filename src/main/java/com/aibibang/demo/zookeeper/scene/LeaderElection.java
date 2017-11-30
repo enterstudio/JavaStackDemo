@@ -71,7 +71,7 @@ public class LeaderElection extends TestMainClient {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		LeaderElection le = new LeaderElection("10.16.238.92:2181", "/trumantest");
+		LeaderElection le = new LeaderElection("192.168.0.101:2181", "/trumantest");
 		le.findLeader();
 		try {
 			Thread.sleep(100000);
