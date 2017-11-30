@@ -23,7 +23,7 @@
  */
 namespace cpp tutorial
 namespace d tutorial
-namespace java com.newegg.ec2.thrift
+namespace java com.aibibang.thrift
 namespace php tutorial
 namespace perl tutorial
 //namespace haxe tutorial
