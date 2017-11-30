@@ -45,11 +45,7 @@ public class RedisStatusTest {
 			try {Thread.sleep(2000);} catch (InterruptedException e) {}
 			System.out.println(JedisClusterCRC16.getSlot("key9301"));
 			System.out.println(jc.get("key9301"));
-			/*Map<String, JedisPool> nodes = jc.getClusterNodes();
-			Jedis jedis = nodes.get("10.16.238.93:8008").getResource();
-			System.out.println(jedis.clusterNodes());*/
-			//System.out.println(nodes.containsKey("10.16.238.93:8008"));
-			//if(nodes.containsKey("10.16.238.93:8002"))System.out.println("true");
+
 			try {Thread.sleep(2000);} catch (InterruptedException e) {}
 			finally{
 				//jedis.close();
