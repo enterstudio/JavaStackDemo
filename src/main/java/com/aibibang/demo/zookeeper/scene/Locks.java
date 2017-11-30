@@ -99,7 +99,7 @@ public class Locks extends TestMainClient {
 	public static void main(String[] args) {
 		/*new Thread() {
 			public void run() {
-				Locks lock = new Locks("10.16.238.92:2181", "/trumantest");
+				Locks lock = new Locks("192.168.0.101:2181", "/trumantest");
 				lock.getLock();
 			};
 		}.start();*/
